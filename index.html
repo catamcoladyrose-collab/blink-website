@@ -1,0 +1,649 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BLINK PLAYLISTS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: white;
+            margin: 0;
+        }
+
+        header {
+            background-color: lightblue;
+            padding: 35px 60px;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1800px;
+            margin: auto;
+            gap: 40px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            min-width: 0;
+        }
+
+        .logo {
+            width: 180px;
+            height: 180px;
+            object-fit: contain;
+            flex-shrink: 0;
+        }
+
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .brand-text h1 {
+            font-size: 42px;
+            margin: 0;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        .brand-text p {
+            font-size: 22px;
+            margin: 15px 0 0 0;
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+
+        .search-box input {
+            width: 280px;
+            padding: 13px;
+            font-size: 16px;
+            margin: 0;
+        }
+
+        .search-box button {
+            padding: 13px 28px;
+            font-size: 16px;
+            background-color: lightpink;
+            border: 1px solid gray;
+            cursor: pointer;
+        }
+
+        nav {
+            background-color: lightpink;
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav a {
+            color: black;
+            text-decoration: none;
+            margin: 0 20px;
+            font-weight: normal;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        main {
+            width: 90%;
+            max-width: 1400px;
+            margin: 20px auto;
+        }
+
+        .container {
+            display: flex;
+            gap: 15px;
+            align-items: stretch;
+        }
+
+        section {
+            background-color: whitesmoke;
+            padding: 20px;
+            border: 2px solid lightblue;
+            width: 70%;
+        }
+
+        aside {
+            background-color: whitesmoke;
+            padding: 20px;
+            border: 2px solid pink;
+            width: 30%;
+        }
+
+        article {
+            background-color: whitesmoke;
+            padding: 15px;
+            margin-top: 15px;
+            border: 2px solid lightblue;
+        }
+
+        .music {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .music-box {
+            width: 150px;
+            height: 120px;
+            background-color: lavender;
+            border: 2px solid pink;
+            text-align: center;
+            padding-top: 30px;
+            font-size: 60px;
+            flex-shrink: 0;
+        }
+
+        button {
+            background-color: lightpink;
+            border: 1px solid gray;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            opacity: 0.85;
+        }
+
+        .table-container {
+            width: 100%;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+            min-width: 600px;
+        }
+
+        th,
+        td {
+            border: 1px solid gray;
+            padding: 8px;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        th {
+            background-color: lightpink;
+        }
+
+        .album-img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            display: block;
+            margin: auto;
+        }
+
+        .profile-img {
+            width: 160px;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 50%;
+            display: block;
+            margin: 10px auto;
+        }
+
+        audio {
+            width: 220px;
+            max-width: 100%;
+        }
+
+        .bottom {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+            align-items: stretch;
+        }
+
+        form {
+            background-color: #fffaf0;
+            border: 2px solid #f5d6a6;
+            padding: 20px;
+            width: 50%;
+            height: 350px;
+        }
+
+        form input,
+        form select {
+            width: 100%;
+            max-width: 400px;
+            padding: 5px;
+            margin: 5px;
+        }
+
+        .video {
+            background-color: #eaf7ff;
+            border: 2px solid lightblue;
+            padding: 20px;
+            width: 50%;
+            text-align: center;
+        }
+
+        .video iframe {
+            width: 100%;
+            max-width: 560px;
+            height: 250px;
+            border: none;
+        }
+
+        footer {
+            background-color: lightpink;
+            text-align: center;
+            padding: 15px;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 1000px) {
+            header {
+                padding: 25px 30px;
+            }
+
+            .header-content {
+                gap: 20px;
+            }
+
+            .logo {
+                width: 130px;
+                height: 130px;
+            }
+
+            .brand {
+                gap: 20px;
+            }
+
+            .brand-text h1 {
+                font-size: 32px;
+            }
+
+            .brand-text p {
+                font-size: 18px;
+            }
+
+            .search-box input {
+                width: 200px;
+            }
+
+            nav a {
+                margin: 0 10px;
+            }
+
+            .container {
+                flex-direction: column;
+            }
+
+            section,
+            aside {
+                width: 100%;
+            }
+
+            .bottom {
+                flex-direction: column;
+            }
+
+            form,
+            .video {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 700px) {
+            header {
+                padding: 20px 15px;
+            }
+
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+
+            .brand {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .logo {
+                width: 120px;
+                height: 120px;
+            }
+
+            .brand-text h1 {
+                font-size: 30px;
+                white-space: normal;
+            }
+
+            .brand-text p {
+                font-size: 17px;
+                margin-top: 8px;
+            }
+
+            .search-box {
+                width: 100%;
+                margin-right: 0;
+                justify-content: center;
+            }
+
+            .search-box input {
+                width: 65%;
+                max-width: 280px;
+            }
+
+            .search-box button {
+                padding: 11px 18px;
+            }
+
+            nav {
+                padding: 12px 5px;
+            }
+
+            nav a {
+                display: inline-block;
+                margin: 5px 8px;
+                font-size: 14px;
+            }
+
+            main {
+                width: 94%;
+                margin: 15px auto;
+            }
+
+            section,
+            aside {
+                padding: 15px;
+            }
+
+            .music {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+
+            .music-box {
+                width: 130px;
+                height: 100px;
+                font-size: 50px;
+                padding-top: 22px;
+            }
+
+            .table-container {
+                overflow-x: auto;
+            }
+
+            table {
+                min-width: 600px;
+            }
+
+            .profile-img {
+                width: 130px;
+                height: 130px;
+            }
+
+            .bottom {
+                flex-direction: column;
+            }
+
+            form,
+            .video {
+                width: 100%;
+                padding: 15px;
+            }
+
+            form input,
+            form select {
+                width: 100%;
+            }
+
+            .video iframe {
+                width: 100%;
+                height: auto;
+                aspect-ratio: 16 / 9;
+            }
+
+            footer {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="header-content">
+
+        <div class="brand">
+            <img src="logo.PNG" alt="Blink Playlists Logo" class="logo">
+
+            <div class="brand-text">
+                <h1>BLINK PLAYLISTS</h1>
+                <p>Your Place for Good Music</p>
+            </div>
+        </div>
+
+        <div class="search-box">
+            <input type="text" placeholder="Search songs, artists...">
+            <button>Search</button>
+        </div>
+
+    </div>
+</header>
+
+<nav>
+    <a href="Home.html">HOME</a>
+    <a href="Songs.html">SONGS</a>
+    <a href="Artists.html">ARTISTS</a>
+    <a href="Playlists.html">PLAYLISTS</a>
+    <a href="Contacts.html">CONTACT</a>
+</nav>
+
+<main>
+
+    <div class="container">
+
+        <section>
+
+            <h2>FEATURED PLAYLIST</h2>
+
+            <div class="music">
+
+                <div class="music-box">
+                    🎵
+                </div>
+
+                <div>
+                    <p>
+                        Listen to our handpicked songs
+                        that match your mood and style.
+                    </p>
+
+                    <button id="playNowButton">PLAY NOW</button>
+
+                    <audio id="featuredAudio">
+                        <source src="almost_is_never_enough.mp3" type="audio/mpeg">
+                    </audio>
+                </div>
+
+            </div>
+
+            <article>
+
+                <h2>LATEST SONGS</h2>
+<table>
+
+    <tr>
+        <th>Album</th>
+        <th>Song Title</th>
+        <th>Artist</th>
+        <th>Genre</th>
+        <th>MP3</th>
+    </tr>
+
+    <tr>
+        <td>
+            <img src="arianna.jpeg" class="album-img" alt="Ariana Grande">
+        </td>
+
+        <td>Almost Is Never Enough</td>
+        <td>Ariana Grande</td>
+        <td>Pop</td>
+
+        <td>
+            <audio controls preload="metadata">
+                <source src="./almost_is_never_enough.mp3" type="audio/mpeg">
+            </audio>
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            <img src="julie.jpeg" class="album-img" alt="Julie Ann San Jose">
+        </td>
+
+        <td>I'll Be There</td>
+        <td>Julie Ann San Jose</td>
+        <td>Pop</td>
+
+        <td>
+            <audio controls preload="metadata">
+                <source src="./ill_be_there.mp3" type="audio/mpeg">
+            </audio>
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            <img src="little.jpg" class="album-img" alt="Little Mix">
+        </td>
+
+        <td>Woman Like Me</td>
+        <td>Little Mix</td>
+        <td>Pop</td>
+
+        <td>
+            <audio controls preload="metadata">
+                <source src="./woman_like_me.mp3" type="audio/mpeg">
+            </audio>
+        </td>
+    </tr>
+
+</table>
+</article>
+            </article>
+
+        </section>
+
+        <aside>
+
+            <h2>TOP ARTIST</h2>
+
+            <img src="profile.jpg"
+                 alt="Cristine Profile"
+                 class="profile-img">
+
+            <h3 style="text-align: center;">
+                CRISTINE
+            </h3>
+
+            <p style="text-align: center;">
+                Pop Singer
+            </p>
+
+            <p style="text-align: center;">
+                New album out now!
+                Check it out.
+            </p>
+
+            <div style="text-align: center;">
+                <button>VIEW PROFILE</button>
+            </div>
+
+        </aside>
+
+    </div>
+
+    <div class="bottom">
+
+        <form>
+
+            <h3>SUBSCRIBE TO OUR NEWSLETTER</h3>
+
+            <p>
+                Get the latest updates and new
+                song releases straight to your inbox!
+            </p>
+
+            <label>Name:</label>
+            <input type="text" placeholder="Type here...">
+            <br>
+
+            <label>Email:</label>
+            <input type="email" placeholder="Type here...">
+            <br>
+
+            <label>Genre:</label>
+
+            <select>
+                <option>Pop</option>
+                <option>R&B</option>
+                <option>Indie</option>
+                <option>Rock</option>
+            </select>
+
+            <br><br>
+
+            <center>
+                <button type="submit">
+                    SUBMIT
+                </button>
+            </center>
+
+        </form>
+
+        <div class="video">
+
+            <h2>WATCH MUSIC VIDEOS</h2>
+
+            <iframe
+                src="https://www.youtube.com/embed/fSOpiZo1BAA?si=KcZFwmealTa5-9Ma"
+                title="YouTube video player"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen>
+            </iframe>
+
+        </div>
+
+    </div>
+
+</main>
+
+<footer>
+    <p>© 2026 Blink. All Rights Reserved.</p>
+</footer>
+
+
+
+</body>
+</html>
+
